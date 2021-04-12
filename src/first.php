@@ -5,6 +5,6 @@
 	$words = ['sky', 'mountain', 'falcon', 'forest', 'rock', 'blue'];
 	$sentence = 'today is a windy day';
 
-	echo $twig->render('first.html', 
+	echo $twig->render('first.html.twig', 
 		['words' => $words, 'sentence' => $sentence]);
 ?>
