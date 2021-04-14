@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}Blogger{% endblock title %}</title>
+	
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="../resources/styles/base_page.css">
+
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #2C5E91;">
+	
+		<a class="navbar-brand" href="#">{% block navbarname %}PFP Here{% endblock navbarname %}</a>
+		<div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+			<ul class="navbar-nav mr-auto">
+			{% block navitemsleft %}
+			{% endblock navitemsleft %}
+			</ul>
+		</div>
+		<div class="mx-auto order-0">
+			<span class="navbar-brand mx-auto" href="#">
+				<img src="../resources/images/logo.svg" alt="Blogging Site" />
+			</span>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2" style="margin-left: 10px;">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+		<div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+			<ul class="navbar-nav ml-auto">
+			{% block navitemsright %}
+			{% endblock navitemsright %}
+			</ul>
+		</div>
+
+	</nav>
+
+	<div class="container" style="margin-top:30px">
+		{% block content %}
+			
+			<div id="blogCarousel" class="carousel slide" data-ride="carousel">
+
+			  <ul class="carousel-indicators">
+				<li data-target="#blogCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#blogCarousel" data-slide-to="1"></li>
+				<li data-target="#blogCarousel" data-slide-to="2"></li>
+			  </ul>
+			  
+			  <div class="carousel-inner">
+			  
+				<div class="carousel-item active blog-container">
+					<img class="blog-img" src="../resources/images/tree.jpg" />
+					<h2>Nature Blog</h2><span> - by @user1</span>
+					<h5>Introduction</h5>
+					<p>Donec consequat varius vestibulum. Sed neque nisl, auctor sit amet maximus id, rhoncus consequat lacus. Suspendisse vel odio vel sapien lobortis placerat eu in nisl. Pellentesque venenatis, ligula non commodo porttitor, velit nunc accumsan turpis, vitae sagittis tortor magna id nulla. Etiam et justo sed velit molestie hendrerit vel vitae ligula. Donec blandit mauris quis eros venenatis, vel volutpat sem consequat. Donec mattis enim in cursus hendrerit. Pellentesque turpis libero, hendrerit aliquam eros non, volutpat scelerisque magna. Praesent id pretium metus, finibus varius nunc. Cras malesuada finibus tellus sed tempor. Pellentesque ipsum sapien, molestie vel nisl ut, porta molestie risus. Sed ut ipsum id erat pharetra dapibus sed in est. </p>
+					<h5>Furthermore</h5>
+					<p>Donec consequat varius vestibulum. Sed neque nisl, auctor sit amet maximus id, rhoncus consequat lacus. Suspendisse vel odio vel sapien lobortis placerat eu in nisl. Pellentesque venenatis, ligula non commodo porttitor, velit nunc accumsan turpis, vitae sagittis tortor magna id nulla. Etiam et justo sed velit molestie hendrerit vel vitae ligula. Donec blandit mauris quis eros venenatis, vel volutpat sem consequat. Donec mattis enim in cursus hendrerit. Pellentesque turpis libero, hendrerit aliquam eros non, volutpat scelerisque magna. Praesent id pretium metus, finibus varius nunc. Cras malesuada finibus tellus sed tempor. Pellentesque ipsum sapien, molestie vel nisl ut, porta molestie risus. Sed ut ipsum id erat pharetra dapibus sed in est. </p>
+					<p>Donec consequat varius vestibulum. Sed neque nisl, auctor sit amet maximus id, rhoncus consequat lacus. Suspendisse vel odio vel sapien lobortis placerat eu in nisl. Pellentesque venenatis, ligula non commodo porttitor, velit nunc accumsan turpis, vitae sagittis tortor magna id nulla. Etiam et justo sed velit molestie hendrerit vel vitae ligula. Donec blandit mauris quis eros venenatis, vel volutpat sem consequat. Donec mattis enim in cursus hendrerit. Pellentesque turpis libero, hendrerit aliquam eros non, volutpat scelerisque magna. Praesent id pretium metus, finibus varius nunc. Cras malesuada finibus tellus sed tempor. Pellentesque ipsum sapien, molestie vel nisl ut, porta molestie risus. Sed ut ipsum id erat pharetra dapibus sed in est. </p>
+				</div>
+				
+				<div class="carousel-item blog-container">
+					<img class="blog-img" src="../resources/images/coffee_shop.jpg" />
+					<h2>Coffee</h2><span> - by @user2</span>
+					<h5>Introduction</h5>
+					<p>Donec consequat varius vestibulum. Sed neque nisl, auctor sit amet maximus id, rhoncus consequat lacus. Suspendisse vel odio vel sapien lobortis placerat eu in nisl. Pellentesque venenatis, ligula non commodo porttitor, velit nunc accumsan turpis, vitae sagittis tortor magna id nulla. Etiam et justo sed velit molestie hendrerit vel vitae ligula. Donec blandit mauris quis eros venenatis, vel volutpat sem consequat. Donec mattis enim in cursus hendrerit. Pellentesque turpis libero, hendrerit aliquam eros non, volutpat scelerisque magna. Praesent id pretium metus, finibus varius nunc. Cras malesuada finibus tellus sed tempor. Pellentesque ipsum sapien, molestie vel nisl ut, porta molestie risus. Sed ut ipsum id erat pharetra dapibus sed in est. </p>
+					<h5>Furthermore</h5>
+					<p>Donec consequat varius vestibulum. Sed neque nisl, auctor sit amet maximus id, rhoncus consequat lacus. Suspendisse vel odio vel sapien lobortis placerat eu in nisl. Pellentesque venenatis, ligula non commodo porttitor, velit nunc accumsan turpis, vitae sagittis tortor magna id nulla. Etiam et justo sed velit molestie hendrerit vel vitae ligula. Donec blandit mauris quis eros venenatis, vel volutpat sem consequat. Donec mattis enim in cursus hendrerit. Pellentesque turpis libero, hendrerit aliquam eros non, volutpat scelerisque magna. Praesent id pretium metus, finibus varius nunc. Cras malesuada finibus tellus sed tempor. Pellentesque ipsum sapien, molestie vel nisl ut, porta molestie risus. Sed ut ipsum id erat pharetra dapibus sed in est. </p>
+					<p>Donec consequat varius vestibulum. Sed neque nisl, auctor sit amet maximus id, rhoncus consequat lacus. Suspendisse vel odio vel sapien lobortis placerat eu in nisl. Pellentesque venenatis, ligula non commodo porttitor, velit nunc accumsan turpis, vitae sagittis tortor magna id nulla. Etiam et justo sed velit molestie hendrerit vel vitae ligula. Donec blandit mauris quis eros venenatis, vel volutpat sem consequat. Donec mattis enim in cursus hendrerit. Pellentesque turpis libero, hendrerit aliquam eros non, volutpat scelerisque magna. Praesent id pretium metus, finibus varius nunc. Cras malesuada finibus tellus sed tempor. Pellentesque ipsum sapien, molestie vel nisl ut, porta molestie risus. Sed ut ipsum id erat pharetra dapibus sed in est. </p>
+				</div>
+				
+				<div class="carousel-item blog-container">
+					<img class="blog-img" src="../resources/images/holiday.jpg" />
+					<h2>Holidays</h2><span> - by @user3</span>
+					<h5>Introduction</h5>
+					<p>Donec consequat varius vestibulum. Sed neque nisl, auctor sit amet maximus id, rhoncus consequat lacus. Suspendisse vel odio vel sapien lobortis placerat eu in nisl. Pellentesque venenatis, ligula non commodo porttitor, velit nunc accumsan turpis, vitae sagittis tortor magna id nulla. Etiam et justo sed velit molestie hendrerit vel vitae ligula. Donec blandit mauris quis eros venenatis, vel volutpat sem consequat. Donec mattis enim in cursus hendrerit. Pellentesque turpis libero, hendrerit aliquam eros non, volutpat scelerisque magna. Praesent id pretium metus, finibus varius nunc. Cras malesuada finibus tellus sed tempor. Pellentesque ipsum sapien, molestie vel nisl ut, porta molestie risus. Sed ut ipsum id erat pharetra dapibus sed in est. </p>
+					<h5>Furthermore</h5>
+					<p>Donec consequat varius vestibulum. Sed neque nisl, auctor sit amet maximus id, rhoncus consequat lacus. Suspendisse vel odio vel sapien lobortis placerat eu in nisl. Pellentesque venenatis, ligula non commodo porttitor, velit nunc accumsan turpis, vitae sagittis tortor magna id nulla. Etiam et justo sed velit molestie hendrerit vel vitae ligula. Donec blandit mauris quis eros venenatis, vel volutpat sem consequat. Donec mattis enim in cursus hendrerit. Pellentesque turpis libero, hendrerit aliquam eros non, volutpat scelerisque magna. Praesent id pretium metus, finibus varius nunc. Cras malesuada finibus tellus sed tempor. Pellentesque ipsum sapien, molestie vel nisl ut, porta molestie risus. Sed ut ipsum id erat pharetra dapibus sed in est. </p>
+					<p>Donec consequat varius vestibulum. Sed neque nisl, auctor sit amet maximus id, rhoncus consequat lacus. Suspendisse vel odio vel sapien lobortis placerat eu in nisl. Pellentesque venenatis, ligula non commodo porttitor, velit nunc accumsan turpis, vitae sagittis tortor magna id nulla. Etiam et justo sed velit molestie hendrerit vel vitae ligula. Donec blandit mauris quis eros venenatis, vel volutpat sem consequat. Donec mattis enim in cursus hendrerit. Pellentesque turpis libero, hendrerit aliquam eros non, volutpat scelerisque magna. Praesent id pretium metus, finibus varius nunc. Cras malesuada finibus tellus sed tempor. Pellentesque ipsum sapien, molestie vel nisl ut, porta molestie risus. Sed ut ipsum id erat pharetra dapibus sed in est. </p>
+				</div>
+				
+			  </div>
+			  
+			  <a class="carousel-control-prev" href="#blogCarousel" data-slide="prev">
+				<span class="carousel-control-prev-icon"></span>
+			  </a>
+			  <a class="carousel-control-next" href="#blogCarousel" data-slide="next">
+				<span class="carousel-control-next-icon"></span>
+			  </a>
+			  
+			</div>
+			
+		{% endblock content %}
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+</body>
+</html>

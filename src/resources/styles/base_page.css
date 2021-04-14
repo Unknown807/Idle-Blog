@@ -1,0 +1,37 @@
+
+.blog-img {
+	height: 30vh;
+	width: 100%;
+	border-radius: 1.5%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+	background-color: #2C5E91;
+	border-radius: 50%;
+	background-size: 10px;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+	height: 32vh;
+}
+
+.blog-container > * {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.blog-container > h2 {
+	display: inline;
+}
+
+.blog-container > h5 {
+	text-decoration: underline;
+	font-weight: 400;
+}
+
+.blog-container > span {
+	opacity: 70%;
+	font-weight: 400;
+}
