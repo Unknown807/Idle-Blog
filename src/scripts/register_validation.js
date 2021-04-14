@@ -1,0 +1,1 @@
+// General validation and styling of the page for responses

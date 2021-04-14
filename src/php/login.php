@@ -2,5 +2,5 @@
 	require_once 'twig_init.php';
 	$twig = init();
 
-	echo $twig->render("index.html.twig");
+	echo $twig->render("login.html.twig");
 ?>
