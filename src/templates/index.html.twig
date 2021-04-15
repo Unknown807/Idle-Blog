@@ -1,11 +1,41 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Discover Interesting Blogs{% endblock title %}
+{% block pfp %}
+	{% if pfp_path is not empty %}
+		<span class="navbar-brand mx-auto" href="#">
+			<a href="profile.php?username='{{ username }}'"><img src="{{ pfp_path }}" style="border-radius: 50%; width: 40px; height: 40px;"/></a>
+		</span>
+	{% endif %}
+{% endblock pfp %}
 
 {% block navitemsright %}
+	{% if pfp_path is not empty %}
+		<li class="nav-item">
+			<a class="nav-link" href="logout.php">Logout</a>
+		</li>
+	{% else %}
+		<li class="nav-item">
+			<a class="nav-link" href="login.php">Login</a>
+		</li>
 
-<li class="nav-item">
-    <a class="nav-link" href="logout.php">Logout</a>
-</li>
+		<li class="nav-item">
+			<span class="nav-link">|</span>
+		</li>
 
+		<li class="nav-item">
+			<a class="nav-link" href="register.php">Register</a>
+		</li>
+	{% endif %}
 {% endblock navitemsright %}
+
+{% block navitemsleft %}
+	{% if pfp_path is not empty %}
+		<li class="nav-item">
+			<a class="nav-link" href="index.php">Discover</a>
+		</li>
+
+		<li class="nav-item">
+			<a class="nav-link" href="#">Post</a>
+		</li>
+	{% endif %}
+{% endblock navitemsleft %}

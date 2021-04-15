@@ -6,10 +6,13 @@
 
 	if (!isset($_SESSION["uid"])) {
 		session_destroy();
-		echo $twig->render("welcome.html.twig");
+		echo $twig->render("index.html.twig");
 		exit;
 	}
 
-	echo $twig->render("index.html.twig");
+	echo $twig->render("index.html.twig", [
+		"pfp_path" => $_SESSION["pfp"],
+		"username" => $_SESSION["username"],
+	]);
 	
 ?>
