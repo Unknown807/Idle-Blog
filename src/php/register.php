@@ -1,9 +1,16 @@
 <?php
+	session_start();
 
 	require "twig_init.php";
 	$twig = init();
 
+	if (isset($_SESSION["uid"])) {
+		header("Location: index.php");
+		exit;
+	}
+
 	if ($_SERVER["REQUEST_METHOD"] != "POST") {
+		session_destroy();
 		echo $twig->render("register.html.twig");
 		exit;
 	}
@@ -52,6 +59,7 @@
 	}
 
 	if ($uflag || $eflag || $pflag) {
+		session_destroy();
 		echo $twig->render("register.html.twig", [
 			"username" => $username,
 			"username_valid" => $uflag ? "is-invalid" : "",
@@ -79,6 +87,6 @@
 	$query = $dbhandle->prepare($sql);
 	$query->execute($params);
 	
-	echo $twig->render("login.html.twig");
+	header("Location: login.php");
 
 ?>

@@ -1,9 +1,16 @@
 <?php
-
+	session_start();
+	
 	require "twig_init.php";
 	$twig = init();
 
+	if (isset($_SESSION["uid"])) {
+		header("Location: index.php");
+		exit;
+	}
+
 	if ($_SERVER["REQUEST_METHOD"] != "POST") {
+		session_destroy();
 		echo $twig->render("login.html.twig");
 		exit;
 	}
@@ -14,7 +21,7 @@
 	$dbhandle = getConnection();
 	
 	$uflag = $pflag = false;
-	$umsg = $pmsg = "";
+	$umsg = $pmsg = $retrieved_hash = "";
 	
 	$username = sanitise($_POST["username"]);
 	$password = sanitise($_POST["password"]);
@@ -46,6 +53,7 @@
 	}
 
 	if ($uflag || $pflag) {
+		session_destroy();
 		echo $twig->render("login.html.twig", [
 			"username" => $username,
 			"username_valid" => $uflag ? "is-invalid" : "",
@@ -57,7 +65,17 @@
 		exit;
 	}
 	
-	//start session and redirect to discover page or something
-	echo "Login Success";
+	$sql = "SELECT * FROM users WHERE username = :username AND passhash = :passhash";
+	$query = $dbhandle->prepare($sql);
+	$params = ["username" => $username, "passhash" => $retrieved_hash];
+	$query->execute($params);
+	$result = $query->fetch();
+	
+	$_SESSION["uid"] = $result["uid"];
+	$_SESSION["username"] = $result["username"];
+	$_SESSION["email"] = $result["email"];
+	
+	header("Location: index.php");
+	
 
 ?>
