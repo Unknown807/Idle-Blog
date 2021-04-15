@@ -32,7 +32,14 @@
 		$uflag = true;
 		$umsg = "Username cannot be left blank";
 	} else {
-		// Check if username already exists
+		$query = $dbhandle->prepare("SELECT uid FROM users WHERE username = :username");
+		$params = ["username" => $username,];
+		$query->execute($params);
+		$result = $query->fetch();
+		if ($result) {
+			$uflag = true;
+			$umsg = "Username already exists";
+		}
 	}		
 	
 	if (empty($email)) {
@@ -67,6 +74,18 @@
 		exit;
 	}
 	
+	$passhash = password_hash($password, PASSWORD_BCRYPT);
+	$params = ["username" => $username,
+			"email" => $email,
+			"passhash" => $passhash];
 	
+	$sql = "INSERT INTO users
+			(username, email, passhash) VALUES
+			(:username, :email, :passhash)";
+	
+	$query = $dbhandle->prepare($sql);
+	$query->execute($params);
+	
+	echo $twig->render("login.html.twig");
 
 ?>
