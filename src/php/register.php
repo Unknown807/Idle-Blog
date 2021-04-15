@@ -9,14 +9,7 @@
 	}
 	
 	require "connect.php";
-
-	function sanitise($data) {
-		$data = trim($data);
-		$data = stripslashes($data);
-		$data = htmlspecialchars($data);
-		
-		return $data;
-	}
+	require "validation.php";
 	
 	$uflag = $eflag = $pflag = false;
 	$umsg = $emsg = $pmsg = "";
