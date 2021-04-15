@@ -17,7 +17,7 @@
 
 	<nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #2C5E91;">
 	
-		<a class="navbar-brand" href="#">{% block navbarpfp %}PFP Here{% endblock navbarpfp %}</a>
+		<a class="navbar-brand" href="#">{% block navbarpfp %}{% endblock navbarpfp %}</a>
 		<div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
 			<ul class="navbar-nav mr-auto">
 			{% block navitemsleft %}
@@ -56,7 +56,7 @@
 			  
 				<div class="carousel-item active blog-container">
 					<img class="blog-img" src="../resources/images/tree.jpg" />
-					<h2>Nature Blog</h2><span> - by @user1</span>
+					<h2>Nature Blog</h2><span> - by @user1 (20-03-2020)</span>
 					<h5>Introduction</h5>
 					<p>Donec consequat varius vestibulum. Sed neque nisl, auctor sit amet maximus id, rhoncus consequat lacus. Suspendisse vel odio vel sapien lobortis placerat eu in nisl. Pellentesque venenatis, ligula non commodo porttitor, velit nunc accumsan turpis, vitae sagittis tortor magna id nulla. Etiam et justo sed velit molestie hendrerit vel vitae ligula. Donec blandit mauris quis eros venenatis, vel volutpat sem consequat. Donec mattis enim in cursus hendrerit. Pellentesque turpis libero, hendrerit aliquam eros non, volutpat scelerisque magna. Praesent id pretium metus, finibus varius nunc. Cras malesuada finibus tellus sed tempor. Pellentesque ipsum sapien, molestie vel nisl ut, porta molestie risus. Sed ut ipsum id erat pharetra dapibus sed in est. </p>
 					<h5>Furthermore</h5>
@@ -66,7 +66,7 @@
 				
 				<div class="carousel-item blog-container">
 					<img class="blog-img" src="../resources/images/coffee_shop.jpg" />
-					<h2>Coffee</h2><span> - by @user2</span>
+					<h2>Coffee</h2><span> - by @user2 (20-03-2020)</span>
 					<h5>Introduction</h5>
 					<p>Donec consequat varius vestibulum. Sed neque nisl, auctor sit amet maximus id, rhoncus consequat lacus. Suspendisse vel odio vel sapien lobortis placerat eu in nisl. Pellentesque venenatis, ligula non commodo porttitor, velit nunc accumsan turpis, vitae sagittis tortor magna id nulla. Etiam et justo sed velit molestie hendrerit vel vitae ligula. Donec blandit mauris quis eros venenatis, vel volutpat sem consequat. Donec mattis enim in cursus hendrerit. Pellentesque turpis libero, hendrerit aliquam eros non, volutpat scelerisque magna. Praesent id pretium metus, finibus varius nunc. Cras malesuada finibus tellus sed tempor. Pellentesque ipsum sapien, molestie vel nisl ut, porta molestie risus. Sed ut ipsum id erat pharetra dapibus sed in est. </p>
 					<h5>Furthermore</h5>
@@ -76,7 +76,7 @@
 				
 				<div class="carousel-item blog-container">
 					<img class="blog-img" src="../resources/images/holiday.jpg" />
-					<h2>Holidays</h2><span> - by @user3</span>
+					<h2>Holidays</h2><span> - by @user3 (20-03-2020)</span>
 					<h5>Introduction</h5>
 					<p>Donec consequat varius vestibulum. Sed neque nisl, auctor sit amet maximus id, rhoncus consequat lacus. Suspendisse vel odio vel sapien lobortis placerat eu in nisl. Pellentesque venenatis, ligula non commodo porttitor, velit nunc accumsan turpis, vitae sagittis tortor magna id nulla. Etiam et justo sed velit molestie hendrerit vel vitae ligula. Donec blandit mauris quis eros venenatis, vel volutpat sem consequat. Donec mattis enim in cursus hendrerit. Pellentesque turpis libero, hendrerit aliquam eros non, volutpat scelerisque magna. Praesent id pretium metus, finibus varius nunc. Cras malesuada finibus tellus sed tempor. Pellentesque ipsum sapien, molestie vel nisl ut, porta molestie risus. Sed ut ipsum id erat pharetra dapibus sed in est. </p>
 					<h5>Furthermore</h5>
@@ -102,8 +102,6 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-	{% block scripts %}
-	{% endblock scripts %}
 
 </body>
 </html>

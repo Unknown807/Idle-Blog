@@ -4,14 +4,8 @@
 {% block title %}Register{% endblock title %}
 
 {% block stylesheets %}
-	<link rel="stylesheet" href="../resources/styles/register_page.css">
+	<link rel="stylesheet" href="../resources/styles/auth_pages.css">
 {% endblock stylesheets %}
-
-{% block scripts %}
-	<script src="../scripts/register_validation.js"></script>
-{% endblock scripts %}
-
-{% block navbarpfp %}{% endblock navbarpfp %}
 
 {% block navitemsright %}
 
@@ -24,30 +18,30 @@
 {% block content %}
 	<h1 style="margin-bottom: 5%;">Register Your Account</h1>
 	
-	<form action="create_account.php" method="POST">
+	<form action="register.php" method="POST">
 	  <div class="form-group">
 		<label for="username">Username</label>
-		<input type="text" class="form-control {{ username_input|default('') }}" id="username" aria-describedby="usernameHelp" placeholder="Enter username" value="{{ username|default("") }}">
-		<small id="usernameHelp" class="form-text {% if username_input is not empty %}error-text{% else %}text-muted{% endif %}">{{ username_error_msg|default("") }}</small>
+		<input type="text" class="form-control {{ username_valid|default('') }}" name="username" aria-describedby="usernameHelp" placeholder="Enter username" value="{{ username|default("") }}">
+		<small id="usernameHelp" class="form-text {% if username_valid is not empty %}error-text{% else %}text-muted{% endif %}">{{ username_error_msg|default("") }}</small>
 	  </div>
 	  
 	  <div class="form-group">
 		<label for="email">Email address</label>
-		<input type="email" class="form-control {{ email_input|default('') }}" id="email" aria-describedby="emailHelp" placeholder="Enter email" value="{{ email|default("") }}">
-		<small id="emailHelp" class="form-text {% if email_input is not empty %}error-text{% else %}text-muted{% endif %}">We'll never share your email with anyone else.</small>
+		<input type="email" class="form-control {{ email_valid|default('') }}" name="email" aria-describedby="emailHelp" placeholder="Enter email" value="{{ email|default("") }}">
+		<small id="emailHelp" class="form-text {% if email_valid is not empty %}error-text{% else %}text-muted{% endif %}">{{ email_error_msg|default("We'll never share your email with anyone else.") }}</small>
 	  </div>
 	  
 	  <hr />
 	  
 	  <div class="form-group">
 		<label for="password">Password</label>
-		<input type="password" class="form-control {{ password_input|default('') }}" id="password" aria-describedby="passwordHelp" placeholder="Enter password">
-		<small id="passwordHelp" class="form-text {% if password_input is not empty %}error-text{% else %}text-muted{% endif %}">{{ password_error_msg|default("") }}</small>
+		<input type="password" class="form-control {{ password_valid|default('') }}" name="password" aria-describedby="passwordHelp" placeholder="Enter password">
+		<small id="passwordHelp" class="form-text {% if password_valid is not empty %}error-text{% else %}text-muted{% endif %}">{{ password_error_msg|default("") }}</small>
 	  </div>
 	  
 	  <div class="form-group">
 		<label for="confirmPassword">Confirm Password</label>
-		<input type="password" class="form-control {{ password_input|default('') }}" id="confirmPassword" placeholder="Confirm password">
+		<input type="password" class="form-control {{ password_valid|default('') }}" name="confirmPassword" placeholder="Confirm password">
 	  </div>
 	  
 	  <button type="submit" class="btn" style="color: white; background-color: #2C5E91;">Register</button>

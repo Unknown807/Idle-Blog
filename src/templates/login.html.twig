@@ -3,7 +3,9 @@
 
 {% block title %}Login{% endblock title %}
 
-{% block navbarpfp %}{% endblock navbarpfp %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="../resources/styles/auth_pages.css">
+{% endblock stylesheets %}
 
 {% block navitemsright %}
 
@@ -14,5 +16,22 @@
 {% endblock navitemsright %}
 
 {% block content %}
-
-{% endblock %}
+	<h1 style="margin-bottom: 5%;">Login</h1>
+	
+	<form action="login.php" method="POST">
+	  <div class="form-group">
+		<label for="username">Username</label>
+		<input type="text" class="form-control {{ username_input|default('') }}" name="username" aria-describedby="usernameHelp" placeholder="Enter username" value="{{ username|default("") }}">
+		<small id="usernameHelp" class="form-text {% if username_input is not empty %}error-text{% else %}text-muted{% endif %}">{{ username_error_msg|default("") }}</small>
+	  </div>
+	  
+	  <div class="form-group">
+		<label for="password">Password</label>
+		<input type="password" class="form-control {{ password_input|default('') }}" name="password" aria-describedby="passwordHelp" placeholder="Enter password">
+		<small id="passwordHelp" class="form-text {% if password_input is not empty %}error-text{% else %}text-muted{% endif %}">{{ password_error_msg|default("") }}</small>
+	  </div>
+	  
+	  <button type="submit" class="btn" style="color: white; background-color: #2C5E91;">Login</button>
+	
+	</form>
+{% endblock content %}
