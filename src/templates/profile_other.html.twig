@@ -2,6 +2,20 @@
 
 {% block title %}User's Profile{% endblock title %}
 
-{% block userDetailsSec %}
+{% block content %}
+	
+	<div class="container">
+		<div class="row">
+			<div class="col text-center">
+				<img id="userImg" class="img-fluid" src="../resources/images/default.png" />
+				<br />
+				<p>{{ other_username }}</p>
+				
+				<p class="text-muted">Joined - {{ other_joined }}</p>
+			</div>
+		</div>
+	</div>
 
-{% endblock userDetailsSec %}
+	{{ parent() }}
+	
+{% endblock content %}

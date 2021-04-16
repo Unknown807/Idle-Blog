@@ -35,3 +35,19 @@
 	opacity: 70%;
 	font-weight: 400;
 }
+
+#blogSearchForm {
+	padding-right: 0px;
+	padding-left: 0px;
+	margin-bottom: 0px;
+}
+
+#blogSearchForm > * {
+	margin-top: 15px;
+}
+
+#blogSearchButton {
+	color: white;
+	background-color: #2C5E91;
+	margin-right: 5px;
+}

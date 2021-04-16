@@ -5,7 +5,7 @@
 	<script src="../scripts/profile_details.js" ></script>
 {% endblock scripts %}
 
-{% block userDetailsSec %}
+{% block content %}
 
 	<div id="changesModal" class="modal" tabindex="-1">
 	  <div class="modal-dialog">
@@ -30,8 +30,9 @@
 	<div class="container">
 		<form id="detailsForm" class="row" action="change_details.php" method="POST">
 			<div class="col text-center">
-				<img id="user-img" class="img-fluid" src="../resources/images/default.png" />
+				<img id="userImg" class="img-fluid" src="../resources/images/default.png" />
 				<br />
+				<p class="text-muted">Joined - {{ joined }}</p>
 				<input data-toggle="modal" data-target="#changesModal" id="submitButton" type="button" class="btn btn-light mx-auto" value="Save Changes"/>
 			</div>
 			<div class="col form-group">
@@ -53,4 +54,15 @@
 			</div>
 		</form>
 	</div>
-{% endblock userDetailsSec %}
+	
+	<hr />
+	
+	{{ parent() }}
+
+	<hr />
+
+	<div id="blogButtonContainer">
+		<button id="blogEditButton" class="btn">Edit Blog</button>
+		<button id="blogDeleteButton" class="btn">Delete Blog</button>
+	</div>
+{% endblock content %}

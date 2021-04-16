@@ -3,12 +3,28 @@ form {
 	margin-bottom: 10px;
 }
 
-#user-img {
+#userImg {
+	border-radius: 50%;
 	width: 100px;
-	height 100px;
+	height: 100px;
 	margin-bottom: 20px;
 }
 
 #submitButton {
 	width: 120px;
+}
+
+#blogEditButton,
+#blogDeleteButton {
+	color: white;
+	margin-bottom: 10px;
+}
+
+#blogEditButton {
+	background-color: #2C5E91;
+	margin-right: 5px;
+}
+
+#blogDeleteButton {
+	background-color: #DC3545;
 }
