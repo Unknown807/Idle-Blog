@@ -1,4 +1,10 @@
 
 .error-text {
-	color: #DC3545
+	color: #DC3545;
+}
+
+#loginButton,
+#registerButton {
+	color: white;
+	background-color: #2C5E91;
 }

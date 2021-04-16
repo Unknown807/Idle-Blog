@@ -3,8 +3,16 @@
 
 {% block title %}Your Profile{% endblock title %}
 
-{% block content %}
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="../resources/styles/profile_page.css">
+{% endblock stylesheets %}
 
-	<h1 class="d-flex justify-content-center">{{ username_msg }}</h1>
+{% block content %}
+	
+	{% block userDetailsSec %}
+	{% endblock userDetailsSec %}
+	
+	{{ parent() }}
 
 {% endblock content %}

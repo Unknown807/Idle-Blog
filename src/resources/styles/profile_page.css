@@ -1,0 +1,14 @@
+
+form {
+	margin-bottom: 10px;
+}
+
+#user-img {
+	width: 100px;
+	height 100px;
+	margin-bottom: 20px;
+}
+
+#submitButton {
+	width: 120px;
+}

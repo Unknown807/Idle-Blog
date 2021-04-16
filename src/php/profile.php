@@ -9,13 +9,13 @@
 		if (!isset($_SESSION["uid"])) {
 			session_destroy();
 			echo $twig->render("profile_error.html.twig", [
-				"username_msg" => "Blank Username",
+				"error_msg" => "Blank Username",
 			]);
 		} else {		
 			echo $twig->render("profile_error.html.twig", [
 				"pfp_path" => $_SESSION["pfp"],
 				"username" => $_SESSION["username"],
-				"username_msg" => "Blank Username",
+				"error_msg" => "Blank Username",
 			]);
 		}
 		exit;
@@ -29,22 +29,22 @@
 		echo $twig->render("profile_personal.html.twig", [
 			"pfp_path" => $_SESSION["pfp"],
 			"username" => $_SESSION["username"],
-			"username_msg" => "Personal Profile",
+			"email" => $_SESSION["email"],
 		]);
 	} else {
+		// Check if username actually exists before, if not then render error page
+		
 		// else the user is either not logged in or its a strangers profile
 		if (isset($_SESSION["uid"])) {
 			// if logged in then you have to render the pfp + other things
 			echo $twig->render("profile_other.html.twig", [
 				"pfp_path" => $_SESSION["pfp"],
 				"username" => $_SESSION["username"],
-				"username_msg" => "Stranger's Profile",
 			]);
 		} else {
 			session_destroy();
 			// otherwise don't render them in
 			echo $twig->render("profile_other.html.twig", [
-				"username_msg" => "Stranger's Profile",
 			]);
 		}
 		

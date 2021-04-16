@@ -1,2 +1,56 @@
 
 {% extends "profile_base.html.twig" %}
+
+{% block scripts %}
+	<script src="../scripts/profile_details.js" ></script>
+{% endblock scripts %}
+
+{% block userDetailsSec %}
+
+	<div id="changesModal" class="modal" tabindex="-1">
+	  <div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h5 class="modal-title">Saving Changes</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true">&times;</span>
+			</button>
+		  </div>
+		  <div class="modal-body">
+			<p>Are you sure you want to save these changes?</p>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			<button onclick="submitForm();" type="button" class="btn btn-primary" data-dismiss="modal">Save Changes</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
+
+	<div class="container">
+		<form id="detailsForm" class="row" action="change_details.php" method="POST">
+			<div class="col text-center">
+				<img id="user-img" class="img-fluid" src="../resources/images/default.png" />
+				<br />
+				<input data-toggle="modal" data-target="#changesModal" id="submitButton" type="button" class="btn btn-light mx-auto" value="Save Changes"/>
+			</div>
+			<div class="col form-group">
+				<label for="username">Username</label>
+				<input type="text" class="form-control {{ username_valid|default('') }}" name="username" aria-describedby="usernameHelp" placeholder="Username" value="{{ username|default("") }}">
+				<small id="usernameHelp" class="form-text {% if username_valid is not empty %}error-text{% else %}text-muted{% endif %}">{{ username_error_msg|default("") }}</small>
+			</div>
+			<div class="col form-group">
+				<label for="email">Email</label>
+				<input type="email" class="form-control {{ email_valid|default('') }}" name="email" aria-describedby="emailHelp" placeholder="Email" value = "{{ email|default("") }}">
+				<small id="emailHelp" class="form-text {% if email_valid is not empty %}error-text{% else %}text-muted{% endif %}">{{ email_error_msg|default("") }}</small>
+			</div>
+			<div class="col form-group">
+				<label for="password">Password</label>
+				<input type="password" class="form-control {{ password_valid|default('') }}" name="password" aria-describedby="passwordHelp" placeholder="Enter password">
+				<small id="passwordHelp" class="form-text {% if password_valid is not empty %}error-text{% else %}text-muted{% endif %}">{{ password_error_msg|default("") }}</small>
+				<label for="confirmPassword">Confirm Password</label>
+				<input type="password" class="form-control {{ password_valid|default('') }}" name="confirmPassword" placeholder="Confirm password">
+			</div>
+		</form>
+	</div>
+{% endblock userDetailsSec %}

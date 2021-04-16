@@ -1,0 +1,4 @@
+
+function submitForm() {
+	$("#detailsForm").submit()
+}

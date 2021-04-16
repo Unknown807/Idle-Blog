@@ -75,6 +75,7 @@
 	$_SESSION["username"] = $result["username"];
 	$_SESSION["email"] = $result["email"];
 	$_SESSION["pfp"] = $result["pfp"];
+	$_SESSION["joined"] = $result["joined"];
 	
 	header("Location: index.php");
 	
