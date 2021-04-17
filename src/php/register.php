@@ -18,9 +18,6 @@
 	require "connect.php";
 	require "validation.php";
 	
-	$uflag = $eflag = $pflag = false;
-	$umsg = $emsg = $pmsg = "";
-	
 	$username = sanitise($_POST["username"]);	
 	$email = sanitise($_POST["email"]);
 	$password = sanitise($_POST["password"]);
@@ -28,49 +25,20 @@
 
 	$dbhandle = getConnection();
 	
-	if (empty($username)) {
-		$uflag = true;
-		$umsg = "Username cannot be left blank";
-	} else {
-		$query = $dbhandle->prepare("SELECT uid FROM users WHERE username = :username");
-		$params = ["username" => $username,];
-		$query->execute($params);
-		$result = $query->fetch();
-		if ($result) {
-			$uflag = true;
-			$umsg = "Username already exists";
-		}
-	}		
-	
-	if (empty($email)) {
-		$eflag = true;
-		$emsg = "Email cannot be left blank";
-	} else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-		$eflag = true;
-		$emsg = "Invalid email format";
-	}
-	
-	if (empty($password) || empty($confirmPassword)) {
-		$pflag = true;
-		$pmsg = "Password cannot be left blank";
-	} else if ($password != $confirmPassword) {
-		$pflag = true;
-		$pmsg = "Password's have to be the same";
-	}
+	$umsg = validateUsername($dbhandle, $username);
+	$emsg = validateEmail($email);
+	$pmsg = validatePassword($password, $confirmPassword);
 
-	if ($uflag || $eflag || $pflag) {
+	if ($umsg || $emsg || $pmsg) {
 		session_destroy();
 		echo $twig->render("register.html.twig", [
 			"username" => $username,
-			"username_valid" => $uflag ? "is-invalid" : "",
-			"username_error_msg" => $uflag ? $umsg : "",
+			"username_error_msg" => $umsg ? $umsg : "",
 			
 			"email" => $email,
-			"email_valid" => $eflag ? "is-invalid" : "",
-			"email_error_msg" => $eflag ? $emsg : "",
+			"email_error_msg" => $emsg ? $emsg : "",
 			
-			"password_valid" => $pflag ? "is-invalid" : "",
-			"password_error_msg" => $pflag ? $pmsg : "",
+			"password_error_msg" => $pmsg ? $pmsg : "",
 		]);
 		exit;
 	}

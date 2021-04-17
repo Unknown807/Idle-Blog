@@ -7,7 +7,21 @@ form {
 	border-radius: 50%;
 	width: 100px;
 	height: 100px;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
+	cursor: pointer;
+}
+
+#imgHelp {
+	margin-bottom: 10px;
+}
+
+
+#fileUpload {
+	width: 0px;
+	height: 0px;
+	overflow: hidden;
+	display: inline;
+	margin: 0px;
 }
 
 #submitButton {
@@ -27,4 +41,8 @@ form {
 
 #blogDeleteButton {
 	background-color: #DC3545;
+}
+
+.error-text {
+	color: #DC3545;
 }

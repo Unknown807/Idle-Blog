@@ -20,19 +20,17 @@
 	
 	$dbhandle = getConnection();
 	
-	$uflag = $pflag = false;
-	$umsg = $pmsg = $retrieved_hash = "";
+	$umsg = $pmsg = false;
+	$retrieved_hash = "";
 	
 	$username = sanitise($_POST["username"]);
 	$password = sanitise($_POST["password"]);
 	
 	if (empty($password)) {
-		$pflag = true;
 		$pmsg = "Password cannot be left blank";
 	}
 	
 	if (empty($username)) {
-		$uflag = true;
 		$umsg = "Username cannot be left blank";
 	} else {
 		$sql = "SELECT username, passhash FROM users WHERE username = :username";
@@ -43,24 +41,19 @@
 		if ($result) {
 			$retrieved_hash = $result["passhash"];
 			if (!password_verify($password, $retrieved_hash)) {
-				$pflag = true;
 				$pmsg = "Wrong password";
 			}
 		} else {
-			$uflag = true;
 			$umsg = "That username doesn't exist";
 		}
 	}
 
-	if ($uflag || $pflag) {
+	if ($umsg || $pmsg) {
 		session_destroy();
 		echo $twig->render("login.html.twig", [
 			"username" => $username,
-			"username_valid" => $uflag ? "is-invalid" : "",
-			"username_error_msg" => $uflag ? $umsg : "",
-			
-			"password_valid" => $pflag ? "is-invalid" : "",
-			"password_error_msg" => $pflag ? $pmsg : "",
+			"username_error_msg" => $umsg ? $umsg : "",
+			"password_error_msg" => $pmsg ? $pmsg : "",
 		]);
 		exit;
 	}

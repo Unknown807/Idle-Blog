@@ -28,29 +28,30 @@
 	</div>
 
 	<div class="container">
-		<form id="detailsForm" class="row" action="change_details.php" method="POST">
+		<form id="detailsForm" class="row" enctype="multipart/form-data" action="change_details.php" method="POST">
 			<div class="col text-center">
-				<img id="userImg" class="img-fluid" src="../resources/images/default.png" />
-				<br />
+				<img onclick="chooseImage();" id="userImg" class="img-fluid" src="{{ pfp_path }}" />
+				<input id="fileUpload" type="file" name="userImg" accept="image/jpeg, image/png" />
+				<small id="imgHelp" class="form-text error-text"></small> 
 				<p class="text-muted">Joined - {{ joined }}</p>
 				<input data-toggle="modal" data-target="#changesModal" id="submitButton" type="button" class="btn btn-light mx-auto" value="Save Changes"/>
 			</div>
 			<div class="col form-group">
 				<label for="username">Username</label>
-				<input type="text" class="form-control {{ username_valid|default('') }}" name="username" aria-describedby="usernameHelp" placeholder="Username" value="{{ username|default("") }}">
-				<small id="usernameHelp" class="form-text {% if username_valid is not empty %}error-text{% else %}text-muted{% endif %}">{{ username_error_msg|default("") }}</small>
+				<input type="text" class="form-control {% if username_error_msg is not empty %}is-invalid{% endif %}" name="username" aria-describedby="usernameHelp" placeholder="Username" value="{{ username|default("") }}">
+				<small id="usernameHelp" class="form-text error-text">{{ username_error_msg|default("") }}</small>
 			</div>
 			<div class="col form-group">
 				<label for="email">Email</label>
-				<input type="email" class="form-control {{ email_valid|default('') }}" name="email" aria-describedby="emailHelp" placeholder="Email" value = "{{ email|default("") }}">
-				<small id="emailHelp" class="form-text {% if email_valid is not empty %}error-text{% else %}text-muted{% endif %}">{{ email_error_msg|default("") }}</small>
+				<input type="email" class="form-control {% if email_error_msg is not empty %}is-invalid{% endif %}" name="email" aria-describedby="emailHelp" placeholder="Email" value = "{{ email|default("") }}">
+				<small id="emailHelp" class="form-text error-text">{{ email_error_msg|default("") }}</small>
 			</div>
 			<div class="col form-group">
 				<label for="password">Password</label>
-				<input type="password" class="form-control {{ password_valid|default('') }}" name="password" aria-describedby="passwordHelp" placeholder="Enter password">
-				<small id="passwordHelp" class="form-text {% if password_valid is not empty %}error-text{% else %}text-muted{% endif %}">{{ password_error_msg|default("") }}</small>
+				<input type="password" class="form-control {% if password_error_msg is not empty %}is-invalid{% endif %}" name="password" aria-describedby="passwordHelp" placeholder="Enter password">
+				<small id="passwordHelp" class="form-text error-text">{{ password_error_msg|default("") }}</small>
 				<label for="confirmPassword">Confirm Password</label>
-				<input type="password" class="form-control {{ password_valid|default('') }}" name="confirmPassword" placeholder="Confirm password">
+				<input type="password" class="form-control {% if password_error_msg is not empty %}is-invalid{% endif %}" name="confirmPassword" placeholder="Confirm password">
 			</div>
 		</form>
 	</div>
