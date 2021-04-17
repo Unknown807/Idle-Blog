@@ -68,6 +68,7 @@
 			"username" => $loggedIn ? $_SESSION["username"] : "",
 			"other_username" => $result["username"],
 			"other_joined" => $result["joined"],
+			"other_pfp_path" => $result["pfp"],
 		]);
 		
 	}
