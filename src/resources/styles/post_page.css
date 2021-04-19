@@ -18,3 +18,8 @@
 #userImg {
 	cursor: pointer;
 }
+
+#submitButton {
+	color: white;
+	background-color: #2C5E91;
+}

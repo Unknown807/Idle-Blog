@@ -12,15 +12,8 @@
 		exit;
 	}
 	
-	$response = false;
-	
 	require "image_utils.php";
 	
-	if (!($_FILES["userImg"]["error"] > UPLOAD_ERR_OK)) {
-		removeLastImage("../resources/temp_images/".$_SESSION["uid"]."pfp_*.*");
-		$response = uploadImage("../resources/temp_images/", "pfp", 100, 100);
-	}
-	
-	echo $response;
+	echo attemptImageUpload("pfp", 100, 100);
 
 ?>

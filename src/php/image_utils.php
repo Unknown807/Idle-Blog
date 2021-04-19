@@ -35,5 +35,16 @@
 			unlink($files[0]);
 		}
 	}
+	
+	function attemptImageUpload($str_infix, $nwidth, $nheight) {
+		if ($_FILES["userImg"]["error"] == UPLOAD_ERR_OK) {
+			removeLastImage("../resources/temp_images/".$_SESSION["uid"].$str_infix."_*.*");
+			$response = uploadImage("../resources/temp_images/", $str_infix, $nwidth, $nheight);
+		} else {
+			$response = false;
+		}
+		
+		return $response;
+	}
 
 ?>
