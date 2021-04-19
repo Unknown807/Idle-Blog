@@ -67,7 +67,7 @@
 	
 	require "image_utils.php";
 	
-	if (!($_FILES["userImg"]["error"] > UPLOAD_ERR_OK)) {
+	if ($_FILES["userImg"]["error"] == UPLOAD_ERR_OK) {
 	
 		$pattern = $uid."pfp_*.*";
 		

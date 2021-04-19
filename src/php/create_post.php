@@ -18,10 +18,6 @@
 		exit;
 	}
 	
-	// validate post details
-	// Then insert post data to DB
-	// 
-	
 	require "connect.php";
 	require "validation.php";
 	
@@ -61,13 +57,32 @@
 			
 			"blog_content" => $blogContent,
 			"blog_content_error_msg" => $content_msg ? $content_msg : "",
-			
 		]);
 		exit;
 	}
 	
+	require "image_utils.php";
 	
+	$image = "../resources/blog_images/default.jpg";
+	if ($_FILES["userImg"]["error"] == UPLOAD_ERR_OK) {		
+		
+		removeLastImage("../resources/temp_images/".$_SESSION["uid"]."blog_image_*.*");
+		
+		$image = uploadImage("../resources/blog_images/", $blogTitle, 1000, 450);
+	}
 	
+	$sql = "INSERT INTO posts (uid, title, content, image) VALUES
+		(:uid, :title, :content, :image)";
+		
+	$query = $dbhandle->prepare($sql);
+	$params = [
+		"uid" => $_SESSION["uid"],
+		"title" => $blogTitle,
+		"content" => $blogContent,
+		"image" => $image,
+	];
+	$query->execute($params);
 	
+	header("Location: profile.php?username=".$_SESSION["username"]);
 
 ?>
