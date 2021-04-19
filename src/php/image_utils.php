@@ -14,9 +14,9 @@
 		
 	}
 
-	function uploadImage($path, $nwidth, $nheight) {
+	function uploadImage($path, $str_infix, $nwidth, $nheight) {
 		
-		$filename = $_SESSION["uid"]."pfp_".mt_rand().".".pathinfo($_FILES["userImg"]["name"], PATHINFO_EXTENSION);
+		$filename = $_SESSION["uid"].$str_infix."_".mt_rand().".".pathinfo($_FILES["userImg"]["name"], PATHINFO_EXTENSION);
 		
 		$imageFileType = pathinfo($filename, PATHINFO_EXTENSION);
 		$imageFileType = strtolower($imageFileType);

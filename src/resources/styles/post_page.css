@@ -1,0 +1,20 @@
+
+.error-text {
+	color: #DC3545;
+}
+
+.blog-container > * {
+	margin-top: 5px;
+}
+
+#fileUpload {
+	width: 0px;
+	height: 0px;
+	overflow: hidden;
+	display: inline;
+	margin: 0px;
+}
+
+#userImg {
+	cursor: pointer;
+}

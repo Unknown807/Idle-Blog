@@ -71,10 +71,10 @@
 	
 		$pattern = $uid."pfp_*.*";
 		
-		removeLastImage("../resources/temp_user_pfps/".$pattern);
+		removeLastImage("../resources/temp_images/".$pattern);
 		removeLastImage("../resources/user_pfps/".$pattern);
 		
-		$newpfp_path = uploadImage("../resources/user_pfps/", 100, 100);
+		$newpfp_path = uploadImage("../resources/user_pfps/", "pfp", 100, 100);
 		$_SESSION["pfp"] = $newpfp_path;
 		
 		$sql = "UPDATE users SET pfp = :newpfp_path WHERE uid = :uid";

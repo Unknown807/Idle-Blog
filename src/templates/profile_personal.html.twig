@@ -3,6 +3,7 @@
 
 {% block scripts %}
 	<script src="../scripts/profile_details.js" ></script>
+	<script src="../scripts/image_preview.js"></script>
 {% endblock scripts %}
 
 {% block content %}
@@ -37,20 +38,20 @@
 				<input data-toggle="modal" data-target="#changesModal" id="submitButton" type="button" class="btn btn-light mx-auto" value="Save Changes"/>
 			</div>
 			<div class="col form-group">
-				<label for="username">Username</label>
+				<label for="username" class="form-text">Username</label>
 				<input type="text" class="form-control {% if username_error_msg is not empty %}is-invalid{% endif %}" name="username" aria-describedby="usernameHelp" placeholder="Username" value="{{ username|default("") }}">
 				<small id="usernameHelp" class="form-text error-text">{{ username_error_msg|default("") }}</small>
 			</div>
 			<div class="col form-group">
-				<label for="email">Email</label>
+				<label for="email" class="form-text">Email</label>
 				<input type="email" class="form-control {% if email_error_msg is not empty %}is-invalid{% endif %}" name="email" aria-describedby="emailHelp" placeholder="Email" value = "{{ email|default("") }}">
 				<small id="emailHelp" class="form-text error-text">{{ email_error_msg|default("") }}</small>
 			</div>
 			<div class="col form-group">
-				<label for="password">Password</label>
+				<label for="password" class="form-text">Password</label>
 				<input type="password" class="form-control {% if password_error_msg is not empty %}is-invalid{% endif %}" name="password" aria-describedby="passwordHelp" placeholder="Enter password">
 				<small id="passwordHelp" class="form-text error-text">{{ password_error_msg|default("") }}</small>
-				<label for="confirmPassword">Confirm Password</label>
+				<label for="confirmPassword" class="form-text">Confirm Password</label>
 				<input type="password" class="form-control {% if password_error_msg is not empty %}is-invalid{% endif %}" name="confirmPassword" placeholder="Confirm password">
 			</div>
 		</form>

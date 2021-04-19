@@ -17,8 +17,8 @@
 	require "image_utils.php";
 	
 	if (!($_FILES["userImg"]["error"] > UPLOAD_ERR_OK)) {
-		removeLastImage("../resources/temp_images/".$_SESSION["uid"]."pfp_*.*");
-		$response = uploadImage("../resources/temp_images/", "pfp", 100, 100);
+		removeLastImage("../resources/temp_images/".$_SESSION["uid"]."blog_image_*.*");
+		$response = uploadImage("../resources/temp_images/", "blog_image", 1000, 450);
 	}
 	
 	echo $response;

@@ -1,0 +1,39 @@
+
+{% extends "index.html.twig" %}
+
+{% block title %}{% endblock title %}
+
+{% block scripts %}
+	<script src="../scripts/post_image.js" ></script>
+	<script src="../scripts/image_preview.js" ></script>
+{% endblock scripts %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="../resources/styles/post_page.css">
+{% endblock stylesheets %}
+
+{% block content %}
+	
+	<form id="blogPostForm" class="container" enctype="multipart/form-data" action="{% block formScript %}{% endblock formScript %}" method="POST">
+		<h2>{% block subtitle %}{% endblock subtitle %}</h2>
+		<div class="row">
+			<div class="col form-group blog-container">
+				<img onclick="chooseImage();" id="userImg" class="blog-img" src="../resources/blog_images/default.jpg" />
+				<input id="fileUpload" type="file" name="userImg" accept="image/jpeg image/png" />
+				<small class="form-text text-muted">Click to change image</small>
+				<small id="imgHelp" class="form-text error-text"></small>
+				
+				<label for="blogTitle" class="form-text"><h5>Your Blog Title</h5></label>
+				<input type="text" class="form-control {% if blog_title_error_msg is not empty %}is-invalid{% endif %}" name="blogTitle" aria-describedby="titleHelp" placeholder="Enter Blog Title" value="{{ blog_title|default("") }}"/>
+				<small id="titleHelp" class="form-text error-text">{{ blog_title_error_msg|default("") }}</small>
+				
+				<label for="blogContent" class="form-text"><h5>Your Content</h5></label>
+				<textarea class="form-control {% if blog_content_error_msg is not empty %}is-invalid{% endif %}" aria-describedby="contentHelp" placeholder="Write Here" rows="10" value="{{ blog_content|default("") }}"></textarea>
+				<small id="contentHelp" class="form-text error-text">{{ blog_content_error_msg|default("") }}</small>
+				<input type="submit" class="btn btn-primary" value="{% block submitButtonTxt %}{% endblock submitButtonTxt %}" />
+			</div>
+		</div>
+	</form>
+
+{% endblock content %}
