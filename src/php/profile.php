@@ -44,6 +44,7 @@
 	}
 	
 	$_SESSION["currently_viewed_user"] = $result["uid"];
+	
 	// get latest blog post by the user
 	$latest = getLatestBlog($dbhandle, $result["uid"]);
 	$formatted_blog_content = formatBlogContent($latest["content"]);

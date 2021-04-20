@@ -57,18 +57,22 @@
 				</div>
 			</form>
 			
-			<div class="container">
-				<div class="row blog-container">
-					<img id="blogImg" src="{{ blog_img }}" />
-					<div id="titleContainer">
-						<h2>{{ blog_title }}</h2>
-						<span class="text-muted">
-							- by <a href="profile.php?username={{ other_username }}">@{{ other_username }}</a> ({{ blog_last_edit_date }})
-						</span>
+			{% if some_var is not empty %}
+			
+			{% else %}
+				<div class="container">
+					<div class="row blog-container">
+						<img id="blogImg" src="{{ blog_img }}" />
+						<div id="titleContainer">
+							<h2>{{ blog_title }}</h2>
+							<span class="text-muted">
+								- by <a href="profile.php?username={{ other_username }}">@{{ other_username }}</a> ({{ blog_last_edit_date }})
+							</span>
+						</div>
+						{{ blog_content|raw }}
 					</div>
-					{{ blog_content|raw }}
 				</div>
-			</div>
+			{% endif %}
 		{% endblock content %}
 	</div>
 

@@ -30,8 +30,9 @@
 				
 				<label for="blogContent" class="form-text"><h5>Your Content</h5></label>
 				<textarea name="blogContent" class="form-control {% if blog_content_error_msg is not empty %}is-invalid{% endif %}" aria-describedby="contentHelp" placeholder="Write Here" rows="10">{{ blog_content|default("") }}</textarea>
+				<small class="form-text text-muted">Use 'TITLE_START(' and ')TITLE_END' to create a sub heading</small>
 				<small id="contentHelp" class="form-text error-text">{{ blog_content_error_msg|default("") }}</small>
-				<input id="submitButton" type="submit" class="btn" value="{% block submitButtonTxt %}{% endblock submitButtonTxt %}" />
+				<input id="submitButton" type="submit" class="btn w-25" value="{% block submitButtonTxt %}{% endblock submitButtonTxt %}" />
 			</div>
 		</div>
 	</form>

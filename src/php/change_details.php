@@ -2,15 +2,26 @@
 	session_start();
 	
 	require "twig_init.php";
+	require "blog_utils.php";
+	
 	$twig = init();
 	
-	function refreshPage($twig) {
+	function refreshPage($dbhandle, $twig) {
+		$latest = getLatestBlog($dbhandle, $_SESSION["uid"]);
+		$formatted_blog_content = formatBlogContent($latest["content"]);
+		
 		echo $twig->render("profile_personal.html.twig", [
 			"search_script" => "search_user_blog.php",
 			"pfp_path" => $_SESSION["pfp"],
 			"username" => $_SESSION["username"],
 			"joined" => $_SESSION["joined"],
 			"email" => $_SESSION["email"],
+			
+			"other_username" => $_SESSION["username"],
+			"blog_img" => $latest["image"],
+			"blog_title" => $latest["title"],
+			"blog_content" => $formatted_blog_content,
+			"blog_last_edit_date" => $latest["date_last_modified"],
 		]);
 		exit;
 	}
@@ -21,11 +32,13 @@
 		exit;
 	}
 	
+	require "connect.php";
+	$dbhandle = getConnection();
+	
 	if ($_SERVER["REQUEST_METHOD"] != "POST") {
 		refreshPage($twig);
 	}
 	
-	require "connect.php";
 	require "validation.php";
 	
 	$uid = $_SESSION["uid"];
@@ -34,8 +47,6 @@
 	$email = sanitise($_POST["email"]);
 	$password = sanitise($_POST["password"]);
 	$confirmPassword = sanitise($_POST["confirmPassword"]);
-	
-	$dbhandle = getConnection();
 	
 	$umsg = false;
 	if ($username != $_SESSION["username"]) {
@@ -68,20 +79,22 @@
 	require "image_utils.php";
 	
 	if ($_FILES["userImg"]["error"] == UPLOAD_ERR_OK) {
-	
-		$pattern = $uid."pfp_*.*";
 		
-		removeLastImage("../resources/temp_images/".$pattern);
-		removeLastImage("../resources/user_pfps/".$pattern);
-		
-		$newpfp_path = uploadImage("../resources/user_pfps/", "pfp", 100, 100);
-		$_SESSION["pfp"] = $newpfp_path;
-		
-		$sql = "UPDATE users SET pfp = :newpfp_path WHERE uid = :uid";
-		$query = $dbhandle->prepare($sql);
-		$params = ["newpfp_path" => $newpfp_path, "uid" => $uid];
-		$query->execute($params);
-		
+		if (validateExtension($_FILES["userImg"]["name"])) {
+			
+			$pattern = $uid."pfp_*.*";
+			
+			removeLastImage("../resources/temp_images/".$pattern);
+			removeLastImage("../resources/user_pfps/".$pattern);
+			
+			$newpfp_path = uploadImage("../resources/user_pfps/", "pfp", 100, 100);
+			$_SESSION["pfp"] = $newpfp_path;
+			
+			$sql = "UPDATE users SET pfp = :newpfp_path WHERE uid = :uid";
+			$query = $dbhandle->prepare($sql);
+			$params = ["newpfp_path" => $newpfp_path, "uid" => $uid];
+			$query->execute($params);
+		}
 	}
 	
 	$sql = "UPDATE users SET username = :username, email = :email WHERE uid = :uid";
@@ -105,6 +118,6 @@
 		$query->execute($params);
 	}
 	
-	refreshPage($twig);
+	refreshPage($dbhandle, $twig);
 
 ?>

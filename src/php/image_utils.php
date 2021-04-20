@@ -14,19 +14,30 @@
 		
 	}
 
-	function uploadImage($path, $str_infix, $nwidth, $nheight) {
-		
-		$filename = $_SESSION["uid"].$str_infix."_".mt_rand().".".pathinfo($_FILES["userImg"]["name"], PATHINFO_EXTENSION);
-		
+	function validateExtension($filename) {
 		$imageFileType = pathinfo($filename, PATHINFO_EXTENSION);
 		$imageFileType = strtolower($imageFileType);
 		
 		$valid_extensions = array("jpg", "jpeg", "png");
 		if (in_array(strtolower($imageFileType), $valid_extensions)) {
-			resizeImage($_FILES["userImg"]["tmp_name"], $path, $filename, $imageFileType, $nwidth, $nheight);
+			return $imageFileType;
+		}
+		return false;
+	}
+
+	function uploadImage($path, $str_infix, $nwidth, $nheight) {
+		
+		$filename = $_SESSION["uid"].$str_infix."_".mt_rand().".".pathinfo($_FILES["userImg"]["name"], PATHINFO_EXTENSION);
+		
+		$ext = validateExtension($filename);
+		
+		if ($ext) {
+			resizeImage($_FILES["userImg"]["tmp_name"], $path, $filename, $ext, $nwidth, $nheight);
+			return $path.$filename;
 		}
 		
-		return $path.$filename;
+		return false;
+		
 	}
 
 	function removeLastImage($path) {
