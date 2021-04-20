@@ -5,20 +5,6 @@
 	border-radius: 1.5%;
 }
 
-/**
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-	background-color: #2C5E91;
-	border-radius: 50%;
-	background-size: 10px;
-}
-
-.carousel-control-prev,
-.carousel-control-next {
-	height: 32vh;
-}
-*/
-
 .blog-container > * {
 	margin-top: 10px;
 	width: 100%;
@@ -56,4 +42,8 @@
 	color: white;
 	background-color: #2C5E91;
 	margin-right: 5px;
+}
+
+.error-text {
+	color: #DC3545;
 }

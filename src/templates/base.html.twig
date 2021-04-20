@@ -48,7 +48,8 @@
 				<h2>Search Blogs</h2>
 				<div class="row">
 					<div class="col form-group">
-						<input class="form-control" type="text" name="blogTitle" placeholder="Search Blog Title" />
+						<input class="form-control" type="text" aria-describedby="titleHelp" name="blogTitle" placeholder="Search Blog Title" />
+						<small id="titleHelp" class="form-text error-text">{{ title_error_msg|default("") }}</small> 
 					</div>
 
 					<div clas="col form-group">

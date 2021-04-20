@@ -4,35 +4,7 @@
 	require "twig_init.php";
 	require "blog_utils.php";
 	
-	$twig = init();
-	
-	function refreshPage($dbhandle, $twig) {
-		$latest = getLatestBlog($dbhandle, $_SESSION["uid"]);
-		
-		$err = false;
-		if (empty($latest)) {
-			$err = true;
-		} else {
-			$formatted_blog_content = formatBlogContent($latest["content"]);
-		}
-		
-		echo $twig->render("profile_personal.html.twig", [
-			"search_script" => "search_user_blog.php",
-			"pfp_path" => $_SESSION["pfp"],
-			"username" => $_SESSION["username"],
-			"joined" => $_SESSION["joined"],
-			"email" => $_SESSION["email"],
-			
-			"other_username" => $_SESSION["username"],
-			"blog_img" => $err ? "" : $latest["image"],
-			"blog_title" => $err ? "" : $latest["title"],
-			"blog_content" => $err ? "" : $formatted_blog_content,
-			"blog_last_edit_date" => $err ? "" : $latest["date_last_modified"],
-			
-			"error" => $err,
-		]);
-		exit;
-	}
+	$twig = init();	
 	
 	if (!isset($_SESSION["uid"])) {
 		session_destroy();
@@ -41,15 +13,17 @@
 	}
 	
 	require "connect.php";
+	
 	$dbhandle = getConnection();
+	$uid = $_SESSION["uid"];
 	
 	if ($_SERVER["REQUEST_METHOD"] != "POST") {
-		refreshPage($twig);
+		$render_options = refreshPage($dbhandle, $uid);
+		echo $twig->render("profile_personal.html.twig", $render_options);
+		exit;
 	}
 	
 	require "validation.php";
-	
-	$uid = $_SESSION["uid"];
 	
 	$username = sanitise($_POST["username"]);	
 	$email = sanitise($_POST["email"]);
@@ -126,6 +100,7 @@
 		$query->execute($params);
 	}
 	
-	refreshPage($dbhandle, $twig);
+	$render_options = refreshPage($dbhandle, $uid);
+	echo $twig->render("profile_personal.html.twig", $render_options);
 
 ?>

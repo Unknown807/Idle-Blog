@@ -1,13 +1,11 @@
 <?php
 	
 	function getLatestBlog($dbhandle, $uid = false) {
-		$sql = "";
+		$sql = "SELECT * FROM posts ORDER BY date_last_modified DESC LIMIT 1";
 		$params = [];
 		if ($uid) {
 			$sql = "SELECT * FROM posts WHERE uid = :uid ORDER BY date_last_modified DESC LIMIT 1";
 			$params = ["uid" => $uid];
-		} else {
-			$sql = "SELECT * FROM posts ORDER BY date_last_modified DESC LIMIT 1";
 		}
 		
 		$query = $dbhandle->prepare($sql);
@@ -44,13 +42,51 @@
 	}
 	
 	function getBlogs($dbhandle, $blogTitle, $uid = false) {
-		$sql = "";
-		$params = [];
-		if ($uid == false) {
-			
-		} else {
 		
+		$sql = "SELECT * FROM posts WHERE title LIKE '%:title%' LIMIT 10";
+		$params = ["title" => "%".$blogTitle."%"];
+		
+		if ($uid) {
+			$sql = "SELECT * FROM posts WHERE title LIKE :title AND uid = :uid LIMIT 10";
+			$params = ["title" => "%".$blogTitle."%", "uid" => $uid,];
 		}
+		
+		$query = $dbhandle->prepare($sql);
+		$query->execute($params);
+		$results = $query->fetchAll();
+		
+		return $results;
+	}
+	
+	function refreshPage($dbhandle, $uid, $userInfo = false) {
+		$loggedIn = isset($_SESSION["uid"]);
+		$latest = getLatestBlog($dbhandle, $uid);
+		
+		$err = false;
+		if (empty($latest)) {
+			$err = true;
+		} else {
+			$formatted_blog_content = formatBlogContent($latest["content"]);
+		}
+		
+		return [
+			"search_script" => "search_user_blog.php",
+			"pfp_path" => $loggedIn ? $_SESSION["pfp"] : "",
+			"username" => $loggedIn ? $_SESSION["username"] : "",
+			"joined" => $loggedIn ? $_SESSION["joined"] : "",
+			"email" => $loggedIn ? $_SESSION["email"] : "",
+			
+			"other_joined" => $userInfo ? $userInfo["joined"] : "",
+			"other_pfp_path" => $userInfo ? $userInfo["pfp"] : "",
+			
+			"other_username" => $userInfo ? $userInfo["username"] : "",
+			"blog_img" => $err ? "" : $latest["image"],
+			"blog_title" => $err ? "" : $latest["title"],
+			"blog_content" => $err ? "" : $formatted_blog_content,
+			"blog_last_edit_date" => $err ? "" : $latest["date_last_modified"],
+			
+			"error" => $err,
+		];
 	}
 
 
