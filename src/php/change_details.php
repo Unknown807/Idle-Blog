@@ -18,7 +18,7 @@
 	$uid = $_SESSION["uid"];
 	
 	if ($_SERVER["REQUEST_METHOD"] != "POST") {
-		$render_options = refreshPage($dbhandle, $uid);
+		$render_options = formatRenderOptions($dbhandle, $uid);
 		echo $twig->render("profile_personal.html.twig", $render_options);
 		exit;
 	}
@@ -100,7 +100,7 @@
 		$query->execute($params);
 	}
 	
-	$render_options = refreshPage($dbhandle, $uid);
+	$render_options = formatRenderOptions($dbhandle, $uid);
 	echo $twig->render("profile_personal.html.twig", $render_options);
 
 ?>

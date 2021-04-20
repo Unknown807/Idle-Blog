@@ -43,11 +43,13 @@
 	
 	function getBlogs($dbhandle, $blogTitle, $uid = false) {
 		
-		$sql = "SELECT * FROM posts WHERE title LIKE '%:title%' LIMIT 10";
+		$sql = "SELECT pid, title, date_last_modified FROM posts WHERE title LIKE :title LIMIT 10";
 		$params = ["title" => "%".$blogTitle."%"];
 		
 		if ($uid) {
-			$sql = "SELECT * FROM posts WHERE title LIKE :title AND uid = :uid LIMIT 10";
+			$sql = "SELECT pid, title, date_last_modified 
+					FROM posts WHERE title LIKE :title AND uid = :uid LIMIT 10";
+			
 			$params = ["title" => "%".$blogTitle."%", "uid" => $uid,];
 		}
 		
@@ -58,7 +60,7 @@
 		return $results;
 	}
 	
-	function refreshPage($dbhandle, $uid, $userInfo = false) {
+	function formatRenderOptions($dbhandle, $uid, $userInfo = false) {
 		$loggedIn = isset($_SESSION["uid"]);
 		$latest = getLatestBlog($dbhandle, $uid);
 		

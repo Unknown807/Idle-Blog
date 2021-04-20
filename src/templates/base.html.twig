@@ -58,7 +58,14 @@
 				</div>
 			</form>
 			
-			{% if some_var is empty %}
+			{% if found_blogs %}
+				<h2>Results:</h2>
+				<div class="list-group">
+					{{ blog_list|raw }}
+				</div>
+			{% elseif no_blogs %}
+				<h2 class="d-flex justify-content-center">No blogs were found with that name</h2>
+			{% else %}
 				<div class="container">
 					<div class="row blog-container">
 						<img id="blogImg" src="{{ blog_img }}" />
@@ -71,8 +78,6 @@
 						{{ blog_content|raw }}
 					</div>
 				</div>
-			{% else %}
-			
 			{% endif %}
 		{% endblock content %}
 	</div>
