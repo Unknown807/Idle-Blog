@@ -57,9 +57,7 @@
 				</div>
 			</form>
 			
-			{% if some_var is not empty %}
-			
-			{% else %}
+			{% if some_var is empty %}
 				<div class="container">
 					<div class="row blog-container">
 						<img id="blogImg" src="{{ blog_img }}" />
@@ -72,6 +70,8 @@
 						{{ blog_content|raw }}
 					</div>
 				</div>
+			{% else %}
+			
 			{% endif %}
 		{% endblock content %}
 	</div>

@@ -16,6 +16,11 @@
 		</div>
 	</div>
 	
-	{{ parent() }}
+	{% if error %}
+		<hr />
+		<h1 class="d-flex justify-content-center">This user has no blogs</h1>
+	{% else %}	
+		{{ parent() }}
+	{% endif %}
 	
 {% endblock content %}

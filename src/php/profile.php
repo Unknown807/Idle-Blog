@@ -46,46 +46,41 @@
 	$_SESSION["currently_viewed_user"] = $result["uid"];
 	
 	// get latest blog post by the user
+	
 	$latest = getLatestBlog($dbhandle, $result["uid"]);
-	$formatted_blog_content = formatBlogContent($latest["content"]);
+	
+	$err = false;
+	if (empty($latest)) {
+		$err = true;
+	} else {
+		$formatted_blog_content = formatBlogContent($latest["content"]);	
+	}
 	
 	if ($loggedIn && ($_SESSION["username"] == $username)) {
 		// username to search is the same as logged in username (your profile)
-		
 		$_SESSION["returning_template"] = "profile_personal";
-		
-		echo $twig->render("profile_personal.html.twig", [
-			"search_script" => "search_user_blog.php",
-			"pfp_path" => $_SESSION["pfp"],
-			"username" => $_SESSION["username"],
-			"joined" => $_SESSION["joined"],
-			"email" => $_SESSION["email"],
-			
-			"other_username" => $_SESSION["username"],
-			"blog_title" => $latest["title"],
-			"blog_content" => $formatted_blog_content,
-			"blog_img" => $latest["image"],
-			"blog_last_edit_date" => $latest["date_last_modified"],
-		]);
 	} else {
-		
 		$_SESSION["returning_template"] = "profile_other";
-		
-		echo $twig->render("profile_other.html.twig", [
-			"search_script" => "search_user_blog.php",
-			"pfp_path" => $loggedIn ? $_SESSION["pfp"] : "",
-			"username" => $loggedIn ? $_SESSION["username"] : "",
-			
-			"other_username" => $result["username"],
-			"other_joined" => $result["joined"],
-			"other_pfp_path" => $result["pfp"],
-			
-			"blog_title" => $latest["title"],
-			"blog_content" => $formatted_blog_content,
-			"blog_img" => $latest["image"],
-			"blog_last_edit_date" => $latest["date_last_modified"],
-			
-		]);
 	}
+	
+	echo $twig->render($_SESSION["returning_template"].".html.twig", [
+		"search_script" => "search_user_blog.php",
+		"pfp_path" => $loggedIn ? $_SESSION["pfp"] : "",
+		"username" => $loggedIn ? $_SESSION["username"] : "",
+		"joined" => $_SESSION["joined"],
+		"email" => $_SESSION["email"],
+		
+		"other_joined" => $result["joined"],
+		"other_pfp_path" => $result["pfp"],
+		
+		"other_username" => $result["username"],
+		"blog_title" => $err ? "" : $latest["title"],
+		"blog_content" => $err ? "" : $formatted_blog_content,
+		"blog_img" => $err ? "" : $latest["image"],
+		"blog_last_edit_date" => $err ? "" : $latest["date_last_modified"],
+		
+		"error" => $err,
+		
+	]);
 
 ?>

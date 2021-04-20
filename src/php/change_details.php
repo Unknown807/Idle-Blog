@@ -8,7 +8,13 @@
 	
 	function refreshPage($dbhandle, $twig) {
 		$latest = getLatestBlog($dbhandle, $_SESSION["uid"]);
-		$formatted_blog_content = formatBlogContent($latest["content"]);
+		
+		$err = false;
+		if (empty($latest)) {
+			$err = true;
+		} else {
+			$formatted_blog_content = formatBlogContent($latest["content"]);
+		}
 		
 		echo $twig->render("profile_personal.html.twig", [
 			"search_script" => "search_user_blog.php",
@@ -18,10 +24,12 @@
 			"email" => $_SESSION["email"],
 			
 			"other_username" => $_SESSION["username"],
-			"blog_img" => $latest["image"],
-			"blog_title" => $latest["title"],
-			"blog_content" => $formatted_blog_content,
-			"blog_last_edit_date" => $latest["date_last_modified"],
+			"blog_img" => $err ? "" : $latest["image"],
+			"blog_title" => $err ? "" : $latest["title"],
+			"blog_content" => $err ? "" : $formatted_blog_content,
+			"blog_last_edit_date" => $err ? "" : $latest["date_last_modified"],
+			
+			"error" => $err,
 		]);
 		exit;
 	}

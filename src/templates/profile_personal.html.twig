@@ -59,12 +59,16 @@
 	
 	<hr />
 
-	{{ parent() }}
-	
-	<hr />
+	{% if error %}
+		<h1 class="d-flex justify-content-center">This user has no blogs</h1>
+	{% else %}
+		{{ parent() }}
+		
+		<hr />
 
-	<div id="blogButtonContainer">
-		<button id="blogEditButton" class="btn">Edit Blog</button>
-		<button id="blogDeleteButton" class="btn">Delete Blog</button>
-	</div>
+		<div id="blogButtonContainer">
+			<button id="blogEditButton" class="btn">Edit Blog</button>
+			<button id="blogDeleteButton" class="btn">Delete Blog</button>
+		</div>
+	{% endif %}
 {% endblock content %}

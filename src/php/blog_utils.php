@@ -3,11 +3,11 @@
 	function getLatestBlog($dbhandle, $uid = false) {
 		$sql = "";
 		$params = [];
-		if ($uid == false) {
-			$sql = "SELECT * FROM posts ORDER BY date_last_modified DESC LIMIT 1";
-		} else {
+		if ($uid) {
 			$sql = "SELECT * FROM posts WHERE uid = :uid ORDER BY date_last_modified DESC LIMIT 1";
 			$params = ["uid" => $uid];
+		} else {
+			$sql = "SELECT * FROM posts ORDER BY date_last_modified DESC LIMIT 1";
 		}
 		
 		$query = $dbhandle->prepare($sql);
@@ -41,6 +41,16 @@
 
 		return $new_content;
 		
+	}
+	
+	function getBlogs($dbhandle, $blogTitle, $uid = false) {
+		$sql = "";
+		$params = [];
+		if ($uid == false) {
+			
+		} else {
+		
+		}
 	}
 
 
