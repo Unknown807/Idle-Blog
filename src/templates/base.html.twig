@@ -56,63 +56,22 @@
 					</div>
 				</div>
 			</form>
-			<div id="blogCarousel" class="carousel slide" data-ride="carousel">
-
-			<!--
-			  <ul class="carousel-indicators">
-				<li data-target="#blogCarousel" data-slide-to="0" class="active"></li>
-				<li data-target="#blogCarousel" data-slide-to="1"></li>
-				<li data-target="#blogCarousel" data-slide-to="2"></li>
-			  </ul>
-			-->
 			
-			  <div class="carousel-inner">
-			  
-				<div class="carousel-item active blog-container">
-					<img class="blog-img" src="../resources/images/tree.jpg" />
-					<h2>Nature Blog</h2><span> - by @user1 (20-03-2020)</span>
-					<h5>Introduction</h5>
-					<p>Donec consequat varius vestibulum. Sed neque nisl, auctor sit amet maximus id, rhoncus consequat lacus. Suspendisse vel odio vel sapien lobortis placerat eu in nisl. Pellentesque venenatis, ligula non commodo porttitor, velit nunc accumsan turpis, vitae sagittis tortor magna id nulla. Etiam et justo sed velit molestie hendrerit vel vitae ligula. Donec blandit mauris quis eros venenatis, vel volutpat sem consequat. Donec mattis enim in cursus hendrerit. Pellentesque turpis libero, hendrerit aliquam eros non, volutpat scelerisque magna. Praesent id pretium metus, finibus varius nunc. Cras malesuada finibus tellus sed tempor. Pellentesque ipsum sapien, molestie vel nisl ut, porta molestie risus. Sed ut ipsum id erat pharetra dapibus sed in est. </p>
-					<h5>Furthermore</h5>
-					<p>Donec consequat varius vestibulum. Sed neque nisl, auctor sit amet maximus id, rhoncus consequat lacus. Suspendisse vel odio vel sapien lobortis placerat eu in nisl. Pellentesque venenatis, ligula non commodo porttitor, velit nunc accumsan turpis, vitae sagittis tortor magna id nulla. Etiam et justo sed velit molestie hendrerit vel vitae ligula. Donec blandit mauris quis eros venenatis, vel volutpat sem consequat. Donec mattis enim in cursus hendrerit. Pellentesque turpis libero, hendrerit aliquam eros non, volutpat scelerisque magna. Praesent id pretium metus, finibus varius nunc. Cras malesuada finibus tellus sed tempor. Pellentesque ipsum sapien, molestie vel nisl ut, porta molestie risus. Sed ut ipsum id erat pharetra dapibus sed in est. </p>
-					<p>Donec consequat varius vestibulum. Sed neque nisl, auctor sit amet maximus id, rhoncus consequat lacus. Suspendisse vel odio vel sapien lobortis placerat eu in nisl. Pellentesque venenatis, ligula non commodo porttitor, velit nunc accumsan turpis, vitae sagittis tortor magna id nulla. Etiam et justo sed velit molestie hendrerit vel vitae ligula. Donec blandit mauris quis eros venenatis, vel volutpat sem consequat. Donec mattis enim in cursus hendrerit. Pellentesque turpis libero, hendrerit aliquam eros non, volutpat scelerisque magna. Praesent id pretium metus, finibus varius nunc. Cras malesuada finibus tellus sed tempor. Pellentesque ipsum sapien, molestie vel nisl ut, porta molestie risus. Sed ut ipsum id erat pharetra dapibus sed in est. </p>
+			<div class="container">
+				<div class="row blog-container">
+					<img id="blogImg" src="{{ blog_img }}" />
+					<div id="titleContainer">
+						<h2>{{ blog_title }}</h2>
+						<span class="text-muted">
+							- by <a href="profile.php?username={{ other_username }}">@{{ other_username }}</a> ({{ blog_last_edit_date }})
+						</span>
+					</div>
+					{{ blog_content|raw }}
 				</div>
-				
-				<div class="carousel-item blog-container">
-					<img class="blog-img" src="../resources/images/coffee_shop.jpg" />
-					<h2>Coffee</h2><span> - by @user2 (20-03-2020)</span>
-					<h5>Introduction</h5>
-					<p>Donec consequat varius vestibulum. Sed neque nisl, auctor sit amet maximus id, rhoncus consequat lacus. Suspendisse vel odio vel sapien lobortis placerat eu in nisl. Pellentesque venenatis, ligula non commodo porttitor, velit nunc accumsan turpis, vitae sagittis tortor magna id nulla. Etiam et justo sed velit molestie hendrerit vel vitae ligula. Donec blandit mauris quis eros venenatis, vel volutpat sem consequat. Donec mattis enim in cursus hendrerit. Pellentesque turpis libero, hendrerit aliquam eros non, volutpat scelerisque magna. Praesent id pretium metus, finibus varius nunc. Cras malesuada finibus tellus sed tempor. Pellentesque ipsum sapien, molestie vel nisl ut, porta molestie risus. Sed ut ipsum id erat pharetra dapibus sed in est. </p>
-					<h5>Furthermore</h5>
-					<p>Donec consequat varius vestibulum. Sed neque nisl, auctor sit amet maximus id, rhoncus consequat lacus. Suspendisse vel odio vel sapien lobortis placerat eu in nisl. Pellentesque venenatis, ligula non commodo porttitor, velit nunc accumsan turpis, vitae sagittis tortor magna id nulla. Etiam et justo sed velit molestie hendrerit vel vitae ligula. Donec blandit mauris quis eros venenatis, vel volutpat sem consequat. Donec mattis enim in cursus hendrerit. Pellentesque turpis libero, hendrerit aliquam eros non, volutpat scelerisque magna. Praesent id pretium metus, finibus varius nunc. Cras malesuada finibus tellus sed tempor. Pellentesque ipsum sapien, molestie vel nisl ut, porta molestie risus. Sed ut ipsum id erat pharetra dapibus sed in est. </p>
-					<p>Donec consequat varius vestibulum. Sed neque nisl, auctor sit amet maximus id, rhoncus consequat lacus. Suspendisse vel odio vel sapien lobortis placerat eu in nisl. Pellentesque venenatis, ligula non commodo porttitor, velit nunc accumsan turpis, vitae sagittis tortor magna id nulla. Etiam et justo sed velit molestie hendrerit vel vitae ligula. Donec blandit mauris quis eros venenatis, vel volutpat sem consequat. Donec mattis enim in cursus hendrerit. Pellentesque turpis libero, hendrerit aliquam eros non, volutpat scelerisque magna. Praesent id pretium metus, finibus varius nunc. Cras malesuada finibus tellus sed tempor. Pellentesque ipsum sapien, molestie vel nisl ut, porta molestie risus. Sed ut ipsum id erat pharetra dapibus sed in est. </p>
-				</div>
-				
-				<div class="carousel-item blog-container">
-					<img class="blog-img" src="../resources/images/holiday.jpg" />
-					<h2>Holidays</h2><span> - by @user3 (20-03-2020)</span>
-					<h5>Introduction</h5>
-					<p>Donec consequat varius vestibulum. Sed neque nisl, auctor sit amet maximus id, rhoncus consequat lacus. Suspendisse vel odio vel sapien lobortis placerat eu in nisl. Pellentesque venenatis, ligula non commodo porttitor, velit nunc accumsan turpis, vitae sagittis tortor magna id nulla. Etiam et justo sed velit molestie hendrerit vel vitae ligula. Donec blandit mauris quis eros venenatis, vel volutpat sem consequat. Donec mattis enim in cursus hendrerit. Pellentesque turpis libero, hendrerit aliquam eros non, volutpat scelerisque magna. Praesent id pretium metus, finibus varius nunc. Cras malesuada finibus tellus sed tempor. Pellentesque ipsum sapien, molestie vel nisl ut, porta molestie risus. Sed ut ipsum id erat pharetra dapibus sed in est. </p>
-					<h5>Furthermore</h5>
-					<p>Donec consequat varius vestibulum. Sed neque nisl, auctor sit amet maximus id, rhoncus consequat lacus. Suspendisse vel odio vel sapien lobortis placerat eu in nisl. Pellentesque venenatis, ligula non commodo porttitor, velit nunc accumsan turpis, vitae sagittis tortor magna id nulla. Etiam et justo sed velit molestie hendrerit vel vitae ligula. Donec blandit mauris quis eros venenatis, vel volutpat sem consequat. Donec mattis enim in cursus hendrerit. Pellentesque turpis libero, hendrerit aliquam eros non, volutpat scelerisque magna. Praesent id pretium metus, finibus varius nunc. Cras malesuada finibus tellus sed tempor. Pellentesque ipsum sapien, molestie vel nisl ut, porta molestie risus. Sed ut ipsum id erat pharetra dapibus sed in est. </p>
-					<p>Donec consequat varius vestibulum. Sed neque nisl, auctor sit amet maximus id, rhoncus consequat lacus. Suspendisse vel odio vel sapien lobortis placerat eu in nisl. Pellentesque venenatis, ligula non commodo porttitor, velit nunc accumsan turpis, vitae sagittis tortor magna id nulla. Etiam et justo sed velit molestie hendrerit vel vitae ligula. Donec blandit mauris quis eros venenatis, vel volutpat sem consequat. Donec mattis enim in cursus hendrerit. Pellentesque turpis libero, hendrerit aliquam eros non, volutpat scelerisque magna. Praesent id pretium metus, finibus varius nunc. Cras malesuada finibus tellus sed tempor. Pellentesque ipsum sapien, molestie vel nisl ut, porta molestie risus. Sed ut ipsum id erat pharetra dapibus sed in est. </p>
-				</div>
-				
-			  </div>
-			  
-			  <a class="carousel-control-prev" href="#blogCarousel" data-slide="prev">
-				<span class="carousel-control-prev-icon"></span>
-			  </a>
-			  <a class="carousel-control-next" href="#blogCarousel" data-slide="next">
-				<span class="carousel-control-next-icon"></span>
-			  </a>
-			  
 			</div>
-			
 		{% endblock content %}
 	</div>
 
-	<!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
 	<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

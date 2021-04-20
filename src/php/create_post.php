@@ -64,7 +64,7 @@
 	require "image_utils.php";
 	
 	$image = "../resources/blog_images/default.jpg";
-	if ($_FILES["userImg"]["error"] == UPLOAD_ERR_OK) {		
+	if ($_FILES["userImg"]["error"] == UPLOAD_ERR_OK) {
 		
 		removeLastImage("../resources/temp_images/".$_SESSION["uid"]."blog_image_*.*");
 		

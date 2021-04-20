@@ -1,9 +1,8 @@
 <?php
+	session_start();
 
-	if (isset($_COOKIE["currentlyViewedUser"])) {
-		echo "Cookie is set";
-	} else {
-		echo "Not Set";
+	if (!isset($_SESSION["currently_viewed_user"])) {
+		echo "Session var set";
 	}
 
 	// this scripts receives blotTitle GET var and will use
