@@ -43,13 +43,11 @@
 	
 	function getBlogs($dbhandle, $blogTitle, $uid = false) {
 		
-		$sql = "SELECT pid, title, date_last_modified FROM posts WHERE title LIKE :title LIMIT 10";
+		$sql = "SELECT * FROM posts WHERE title LIKE :title LIMIT 10";
 		$params = ["title" => "%".$blogTitle."%"];
 		
 		if ($uid) {
-			$sql = "SELECT pid, title, date_last_modified 
-					FROM posts WHERE title LIKE :title AND uid = :uid LIMIT 10";
-			
+			$sql = "SELECT * FROM posts WHERE title LIKE :title AND uid = :uid LIMIT 10";
 			$params = ["title" => "%".$blogTitle."%", "uid" => $uid,];
 		}
 		
@@ -81,7 +79,7 @@
 			"other_joined" => $userInfo ? $userInfo["joined"] : "",
 			"other_pfp_path" => $userInfo ? $userInfo["pfp"] : "",
 			
-			"other_username" => $userInfo ? $userInfo["username"] : "",
+			"other_username" => $userInfo ? $userInfo["username"] : $latest["uid"],
 			"blog_img" => $err ? "" : $latest["image"],
 			"blog_title" => $err ? "" : $latest["title"],
 			"blog_content" => $err ? "" : $formatted_blog_content,
