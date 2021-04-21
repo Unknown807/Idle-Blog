@@ -19,7 +19,7 @@
 		<h2>{% block subtitle %}{% endblock subtitle %}</h2>
 		<div class="row">
 			<div class="col form-group blog-container">
-				<img onclick="chooseImage();" id="userImg" class="blog-img" src="../resources/blog_images/default.jpg" />
+				<img onclick="chooseImage();" id="userImg" class="blog-img" src="{{ blog_img|default('../resources/blog_images/default.jpg') }}" />
 				<input id="fileUpload" type="file" name="userImg" accept="image/jpeg image/png" />
 				<small class="form-text text-muted">Click to change image</small>
 				<small id="imgHelp" class="form-text error-text"></small>
