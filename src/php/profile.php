@@ -51,7 +51,7 @@
 	if ($loggedIn && ($_SESSION["username"] == $username)) {
 		// username to search is the same as logged in username (your profile)
 		$_SESSION["returning_template"] = "profile_personal";
-		$_SESSION["blog_to_edit"] = $render_options["blog_title"];
+		$_SESSION["currently_viewed_blog"] = $render_options["blog_title"];
 	} else {
 		$_SESSION["returning_template"] = "profile_other";
 	}

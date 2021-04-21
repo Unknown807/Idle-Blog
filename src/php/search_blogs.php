@@ -12,6 +12,7 @@
 		
 		if ($searchAll) {
 			$render_options = formatRenderOptions($dbhandle, false);
+			$render_options["search_script"] = "search_all_blogs.php";
 			$params = ["uid" => $render_options["other_username"]];
 			$template = "index";
 		} else {
@@ -33,11 +34,10 @@
 			if ($searchAll) {
 				$render_options["other_username"] = $result["username"];
 				$render_options["title_error_msg"] = "Blank blog title";
-				$render_options["search_script"] = "search_all_blogs.php";
 			} else {
 				$render_options["title_error_msg"] = "Blank blog title";
 			}
-			
+
 			echo $twig->render($template.".html.twig", $render_options);
 			exit;
 		}

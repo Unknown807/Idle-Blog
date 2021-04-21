@@ -1,20 +1,5 @@
 <?php
 	
-	function getLatestBlog($dbhandle, $uid = false) {
-		$sql = "SELECT * FROM posts ORDER BY date_last_modified DESC LIMIT 1";
-		$params = [];
-		if ($uid) {
-			$sql = "SELECT * FROM posts WHERE uid = :uid ORDER BY date_last_modified DESC LIMIT 1";
-			$params = ["uid" => $uid];
-		}
-		
-		$query = $dbhandle->prepare($sql);
-		$query->execute($params);
-		$result = $query->fetch();
-		
-		return $result;
-	}
-	
 	function formatBlogContent($content) {
 		
 		$new_content = "";
@@ -39,6 +24,21 @@
 
 		return $new_content;
 		
+	}
+
+	function getLatestBlog($dbhandle, $uid = false) {
+		$sql = "SELECT * FROM posts ORDER BY date_last_modified DESC LIMIT 1";
+		$params = [];
+		if ($uid) {
+			$sql = "SELECT * FROM posts WHERE uid = :uid ORDER BY date_last_modified DESC LIMIT 1";
+			$params = ["uid" => $uid];
+		}
+		
+		$query = $dbhandle->prepare($sql);
+		$query->execute($params);
+		$result = $query->fetch();
+		
+		return $result;
 	}
 	
 	function getBlogs($dbhandle, $blogTitle, $uid = false) {
@@ -69,6 +69,8 @@
 			$formatted_blog_content = formatBlogContent($latest["content"]);
 		}
 		
+		$latest_uid = $err ? "" : $latest["uid"];
+		
 		return [
 			"search_script" => "search_user_blog.php",
 			"pfp_path" => $loggedIn ? $_SESSION["pfp"] : "",
@@ -78,8 +80,8 @@
 			
 			"other_joined" => $userInfo ? $userInfo["joined"] : "",
 			"other_pfp_path" => $userInfo ? $userInfo["pfp"] : "",
+			"other_username" => $userInfo ? $userInfo["username"] : $latest_uid,
 			
-			"other_username" => $userInfo ? $userInfo["username"] : $latest["uid"],
 			"blog_img" => $err ? "" : $latest["image"],
 			"blog_title" => $err ? "" : $latest["title"],
 			"blog_content" => $err ? "" : $formatted_blog_content,

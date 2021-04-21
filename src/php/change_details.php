@@ -101,6 +101,7 @@
 	}
 	
 	$render_options = formatRenderOptions($dbhandle, $uid);
+	$render_options["other_username"] = $username;
 	echo $twig->render("profile_personal.html.twig", $render_options);
 
 ?>
