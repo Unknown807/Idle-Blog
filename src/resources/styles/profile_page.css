@@ -15,7 +15,6 @@ form {
 	margin-bottom: 10px;
 }
 
-
 #fileUpload {
 	width: 0px;
 	height: 0px;
@@ -30,15 +29,26 @@ form {
 
 #blogEditButton,
 #blogDeleteButton {
-	color: white;
 	margin-bottom: 10px;
 }
 
+#blogEditButton,
+#blogDeleteButton,
+#deleteModalButton,
+#saveModalButton {
+	color: white;
+}
+
 #blogEditButton {
-	background-color: #2C5E91;
 	margin-right: 5px;
 }
 
-#blogDeleteButton {
+#blogEditButton,
+#saveModalButton {
+	background-color: #2C5E91;
+}
+
+#blogDeleteButton,
+#deleteModalButton {
 	background-color: #DC3545;
 }

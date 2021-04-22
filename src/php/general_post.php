@@ -68,7 +68,10 @@
 			WHERE pid = :pid";
 			
 			$params["pid"] = $blogInfo["pid"];
-			$params["date"] = gmdate("Y-m-d H:i:s");
+			
+			$time_now = new DateTime("now");
+			$time_now->setTimeZone(new DateTimeZone("Europe/London"));
+			$params["date"] = $time_now->format("Y-m-d h:m:s");
 			
 		} else {
 			$sql = "INSERT INTO posts (uid, title, content, image) VALUES
