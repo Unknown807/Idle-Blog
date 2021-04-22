@@ -12,7 +12,7 @@
 		} else {
 			$sql = "SELECT pid FROM posts WHERE title = :title";
 			$query = $dbhandle->prepare($sql);
-			$params = ["title" => $edit ? $_SESSION["currently_viewed_blog"] : $blogTitle];
+			$params = ["title" => $blogTitle];
 			$query->execute($params);
 			$result = $query->fetch();
 			
@@ -51,8 +51,25 @@
 		$image = $edit ? $blogInfo["image"] : "../resources/blog_images/default.jpg";
 		if ($_FILES["userImg"]["error"] == UPLOAD_ERR_OK) {
 			
+			if ($edit) {
+				removeLastImage($blogInfo["image"]);
+			}
+			
 			removeLastImage("../resources/temp_images/".$_SESSION["uid"]."blog_image_*.*");
 			$image = uploadImage("../resources/blog_images/", $blogTitle, 1000, 450);
+		} else {
+			if ($edit){
+				
+				$rand_end = explode("_", $blogInfo["image"]);
+				$rand_end = $rand_end[count($rand_end)-1];
+				
+				$image = "../resources/blog_images/".
+						$_SESSION["uid"].
+						$blogTitle."_".
+						$rand_end;
+						
+				rename($blogInfo["image"], $image);
+			}
 		}
 	
 		$params = [

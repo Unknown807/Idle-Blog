@@ -7,6 +7,11 @@
 	}
 	
 	require "connect.php";
+	require "image_utils.php";
+	
+	removeLastImage("../resources/blog_images/".
+					$_SESSION["uid"].
+					$_SESSION["currently_viewed_blog"]."_*.*");
 	
 	$dbhandle = getConnection();
 	
