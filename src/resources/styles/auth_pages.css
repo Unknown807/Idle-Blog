@@ -4,7 +4,12 @@
 }
 
 #loginButton,
-#registerButton {
+#registerButton,
+#sendButton {
 	color: white;
 	background-color: #2C5E91;
+}
+
+#successTxt {
+	color: #01A101;
 }

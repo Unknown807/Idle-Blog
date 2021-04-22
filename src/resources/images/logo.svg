@@ -1,7 +1,7 @@
-<svg width="100" height="50" xmlns="http://www.w3.org/2000/svg">
+<svg width="200" height="100" xmlns="http://www.w3.org/2000/svg">
+
  <g>
   <title>Layer 1</title>
-  <text stroke-width="0.5" transform="matrix(1.80571, 0, 0, 2.10298, -9.50718, -9.11101)" font-style="italic" font-weight="normal" xml:space="preserve" text-anchor="start" font-family="'Harlow Solid Italic'" font-size="14" id="svg_6" y="19.61773" x="11.01293" opacity="undefined" stroke="#56aaff" fill="#ffffff">Blogger</text>
+  <text font-style="normal" font-weight="normal" transform="matrix(2.02201, 0, 0, 2.67319, -19.3658, -24.5508)" xml:space="preserve" text-anchor="start" font-family="'Harlow Solid Italic'" font-size="24" id="svg_2" y="33.70833" x="10.23729" stroke-width="0" stroke="#000" fill="#ffffff">Idle Blog</text>
  </g>
-
 </svg>

@@ -21,13 +21,13 @@
 	<form action="login.php" method="POST">
 	  <div class="form-group">
 		<label for="username">Username</label>
-		<input type="text" class="form-control {% if username_error_msg is not empty %}is-invalid{% endif %}" name="username" aria-describedby="usernameHelp" placeholder="Enter username" value="{{ username|default("") }}">
+		<input type="text" class="form-control {% if username_error_msg is not empty %}is-invalid{% endif %}" name="username" aria-describedby="usernameHelp" placeholder="Enter username" value="{{ username|default("") }}" />
 		<small id="usernameHelp" class="form-text error-text">{{ username_error_msg|default("") }}</small>
 	  </div>
 	  
 	  <div class="form-group">
 		<label for="password">Password</label>
-		<input type="password" class="form-control {% if password_error_msg is not empty %}is-invalid{% endif %}" name="password" aria-describedby="passwordHelp" placeholder="Enter password">
+		<input type="password" class="form-control {% if password_error_msg is not empty %}is-invalid{% endif %}" name="password" aria-describedby="passwordHelp" placeholder="Enter password" />
 		<small id="passwordHelp" class="form-text error-text">{{ password_error_msg|default("") }}</small>
 	  </div>
 	  
@@ -35,7 +35,7 @@
 	
 	  <hr />
 	
-	  <a href="#"><input type="button" class="btn btn-light" value="Forgot Password?"/></a>
+	  <a href="email_reset_password.php"><input type="button" class="btn btn-light" value="Forgot Password?"/></a>
 	  
 	</form>
 {% endblock content %}
