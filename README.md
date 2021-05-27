@@ -22,7 +22,7 @@ XAMPP for local hosting (easy to use and set up): https://www.apachefriends.org/
 Frontend:
 - HTML ( + rendered Twig templates)
 - JQuery ( + ajax for immediate image upload previews)
-- Bootstrap + some custom css
+- Bootstrap 4 + some custom css
 
 Backend:
 - Php - version 8.0.3
