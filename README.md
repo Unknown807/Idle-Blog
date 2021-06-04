@@ -29,7 +29,7 @@ Backend:
 - MySQL for database + PhpMyAdmin
 - Twig - version ^3.0
 
-## Datebase Design
+## Database Design
 
 ![](/repo_imgs/dbdiagram.JPG)
 
