@@ -17,7 +17,7 @@ Note: After using the filesystem for storing user and blog images it had been qu
 
 ## Dependencies / Tools Used
 
-XAMPP for local hosting (easy to use and set up): https://www.apachefriends.org/download.html
+<a href="https://www.apachefriends.org/download.html">XAMPP</a> for local hosting (easy to set up and use)
 
 Frontend:
 - HTML ( + rendered Twig templates)
